@@ -1,5 +1,5 @@
 # ITSE476_project
-# Hotel Reservation System
+## Hotel Reservation System
 
 ## Overview
 This is an open-source Hotel Reservation System that allows users to search for available rooms, make bookings, and manage their reservations.
