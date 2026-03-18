@@ -1,5 +1,5 @@
 # Frequently Asked Questions (FAQ)
-
+[View FAQ](docs/FAQ.md)
 This document provides answers to common questions about RoomMate — an open-source hotel reservation system.
 
 ---
