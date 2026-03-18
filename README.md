@@ -91,8 +91,8 @@ ITSE476_project/
 |------|-----------|------|
 | Bushra Hussain Habib | 202207555 | Main page, project overview, README, LICENSE |
 | Esha | — | Users page, application resources |
-| Zainab | — | Contributors page, contribution guidelines |
-| Fatima Yusuf | — | GitHub repo management, Wiki, project board |
+| Zainab Abdiljuleel Mohammed | 202206573 | Contributors page, contribution guidelines |
+| Fatima Sayed Saeed Yusuf | 202208285 | GitHub repo management, Wiki, project board |
 
 ---
 
