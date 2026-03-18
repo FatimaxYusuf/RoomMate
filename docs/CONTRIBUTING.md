@@ -1,7 +1,7 @@
 # Contributing to RoomMate
 Thank you for your interest in contributing to RoomMate — an open-source hotel reservation system. This document explains how to get involved.
 
-
+---
 
 ## Ways to Contribute
 
@@ -11,14 +11,14 @@ Thank you for your interest in contributing to RoomMate — an open-source hotel
 - Improve documentation or the FAQ
 - Join the discussion on [GitHub Discussions](https://github.com/FatimaxYusuf/ITSE476_project/discussions)
 
-
+---
 
 ## Before You Start
 
 - Check the [open issues](https://github.com/FatimaxYusuf/ITSE476_project/issues) to see if your idea or bug is already being tracked
 - For large changes, open an issue first to discuss the approach before writing code
 
-
+---
 
 ## How to Contribute
 
