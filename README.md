@@ -94,7 +94,7 @@ ITSE476_project/
 | Name | Student ID | Responsibility |
 |------|-----------|----------------|
 | Bushra Hussain Habib | 202207555 | Main page, project overview, README, LICENSE |
-| Esha | — | Users page, application resources |
+| Esha Ashfar | 202200593 | Users page, application resources |
 | Zainab Abdiljuleel Mohammed | 202206573 | Contributors page, contribution guidelines |
 | Fatima Sayed Saeed Yusuf | 202208285 | GitHub repository management, Wiki, project board |
 
