@@ -1,0 +1,30 @@
+# Compiled Java class files
+*.class
+
+# Compiled output directory
+bin/
+
+# JAR files (keep lib/ tracked, ignore build output jars)
+*.jar
+!lib/*.jar
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.eclipse
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build tools
+build/
+out/
+target/
+
+# Test output
+test-results/
