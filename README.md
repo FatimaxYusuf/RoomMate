@@ -76,18 +76,16 @@ ITSE476_project/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
-│
 ├── assets/                  # Images and static files
 ├── backend/                 # Backend logic (planned)
-│
 ├── docs/
-│   ├── CONTRIBUTING.md
-│   └── FAQ.md
-│
+│   ├── CONTRIBUTING.md      # Contribution guidelines
+│   └── FAQ.md               # Frequently asked questions
 └── frontend/
     ├── index.html           # Main page
     ├── users/               # User pages and resources
     └── developers/          # Developer-related pages
+```
 
 ---
 
