@@ -6,6 +6,9 @@ RoomMate is an open-source project, and we are committed to providing a respectf
 
 We want all contributors, users, and reviewers to feel comfortable asking questions, sharing ideas, reporting issues, and discussing improvements.
 
+> [!IMPORTANT]
+> All participants are expected to communicate respectfully and contribute to a positive project environment.
+
 ---
 
 ## Expected Behavior
@@ -49,7 +52,8 @@ This Code of Conduct applies to all project-related spaces, including:
 
 If you experience or witness behavior that violates this Code of Conduct, please report it by contacting the project maintainers through GitHub Discussions or by opening a private communication channel with the repository owner.
 
-All reports will be reviewed carefully and handled respectfully.
+> [!NOTE]
+> All reports will be reviewed carefully and handled respectfully.
 
 ---
 
@@ -57,7 +61,11 @@ All reports will be reviewed carefully and handled respectfully.
 
 Project maintainers are responsible for ensuring that this Code of Conduct is followed.
 
-They may take appropriate action when necessary, including editing or removing inappropriate content, limiting participation in discussions, or restricting contributions from users who repeatedly violate these guidelines.
+They may take appropriate action when necessary, including:
+
+- Editing or removing inappropriate content
+- Limiting participation in discussions
+- Restricting contributions from users who repeatedly violate these guidelines
 
 ---
 
