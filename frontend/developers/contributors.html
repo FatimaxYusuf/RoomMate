@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contributors - RoomMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #8d0000;
+    --burgundy-light: #c01a1a;
+    --burgundy-dark: #7a0000;
+    --beige: #F5EFE6;
+    --beige-dark: #EAE0D0;
+    --beige-darker: #D9CCBA;
+    --warm-white: #FBF8F4;
+    --text-dark: #2C1810;
+    --text-mid: #6B5A52;
+    --text-light: #9E8E85;
+    --gold: #B8960C;
+    --gold-light: #D4AF37;
+    --green: #276B3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(251,248,244,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--beige-darker);
+    padding: 0 4rem; display: flex; align-items: center; justify-content: space-between; height: 70px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .nav-logo-mark {
+    width: 34px; height: 34px; background: var(--burgundy); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; fill: none; stroke: var(--beige); stroke-width: 2; }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--burgundy); font-weight: 700; letter-spacing: 0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 400;
+    letter-spacing: 0.04em; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px;
+    background: var(--burgundy); transform: scaleX(0); transition: transform 0.2s; transform-origin: left;
+  }
+  .nav-links a:hover { color: var(--burgundy); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--burgundy); }
+  .nav-btn {
+    background: var(--burgundy) !important; color: var(--beige) !important;
+    padding: 0.5rem 1.4rem; border-radius: 4px; font-weight: 700 !important;
+  }
+  .nav-btn:hover { background: var(--burgundy-light) !important; }
+  .nav-btn::after { display: none !important; }
+
+  /* GENERAL SECTIONS */
+  section { padding: 3.5rem 4rem; }
+  .first-section { padding-top: 7.8rem; }
+
+  .sec-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--burgundy); font-weight: 700; margin-bottom: 0.6rem;
+  }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.7rem);
+    color: var(--text-dark);
+    line-height: 1.18;
+    margin-bottom: 1rem;
+  }
+  .sec-title em { color: var(--burgundy); font-style: italic; }
+  .sec-desc {
+    color: var(--text-mid); font-size: 0.94rem; line-height: 1.75;
+    max-width: 680px; font-weight: 300;
+  }
+
+  /* PAGE INTRO */
+  .page-intro {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--beige-darker);
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 1.5rem;
+  }
+  .intro-box {
+    background: var(--beige);
+    border: 1px solid var(--beige-darker);
+    border-radius: 10px;
+    padding: 1.6rem;
+  }
+  .intro-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-bottom: 0.65rem;
+  }
+  .intro-box p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+  }
+  .intro-box p:last-child { margin-bottom: 0; }
+
+  .quick-list {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .quick-item {
+    background: var(--warm-white);
+    border: 1px solid var(--beige-darker);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .quick-item-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--burgundy);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .quick-item-text {
+    font-size: 0.83rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* FEATURE GRID */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .feat-card {
+    background: var(--beige); border: 1px solid var(--beige-darker);
+    border-radius: 10px; padding: 2rem; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .feat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--burgundy), var(--gold-light));
+    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(164,0,0,0.1); }
+  .feat-card:hover::before { transform: scaleX(1); }
+  .feat-icon-box {
+    width: 44px; height: 44px; border-radius: 8px; background: var(--burgundy);
+    margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center;
+  }
+  .feat-icon-box svg { width: 20px; height: 20px; fill: none; stroke: var(--beige); stroke-width: 1.8; }
+  .feat-title {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark);
+  }
+  .feat-desc {
+    font-size: 0.84rem; color: var(--text-mid); line-height: 1.65; font-weight: 300;
+  }
+  .feat-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--burgundy);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  /* TWO COLUMN SECTION */
+  .split-section { background: var(--beige); }
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .about-box {
+    background: var(--warm-white); border: 1px solid var(--beige-darker);
+    border-radius: 10px; padding: 2rem;
+  }
+  .about-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+  .about-box p {
+    font-size: 0.87rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .about-box p:last-of-type { margin-bottom: 0; }
+
+  .guideline-list { display: grid; gap: 1rem; }
+  .guideline-item {
+    display: flex; gap: 0.9rem; align-items: flex-start;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--beige-darker);
+  }
+  .guideline-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .guide-num {
+    min-width: 36px; height: 36px; border-radius: 50%;
+    background: var(--beige-dark); color: var(--burgundy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-weight: 700;
+  }
+  .guide-title {
+    font-weight: 700; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.25rem;
+  }
+  .guide-desc {
+    font-size: 0.84rem; color: var(--text-mid); line-height: 1.65; font-weight: 300;
+  }
+
+  /* TASKS */
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .task-card {
+    background: var(--beige);
+    border: 1px solid var(--beige-darker);
+    border-radius: 10px;
+    padding: 1.6rem;
+  }
+  .task-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    padding: 0.14rem 0.55rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  .tag-dev { background: rgba(164,0,0,0.1); color: var(--burgundy); }
+  .tag-docs { background: rgba(39,107,58,0.12); color: var(--green); }
+  .tag-web { background: rgba(184,150,12,0.12); color: var(--gold); }
+  .task-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin-bottom: 0.45rem;
+  }
+  .task-desc {
+    font-size: 0.83rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--burgundy);
+    padding: 3.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .cta-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--beige);
+    margin-bottom: 0.6rem;
+  }
+  .cta-text p {
+    color: rgba(245,239,230,0.68);
+    font-size: 0.94rem;
+    font-weight: 300;
+    max-width: 620px;
+  }
+  .cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary-light {
+    background: var(--beige); color: var(--burgundy); padding: 0.9rem 2rem;
+    border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.03em; transition: all 0.2s;
+  }
+  .btn-primary-light:hover { background: var(--warm-white); transform: translateY(-2px); }
+  .btn-outline-light {
+    border: 1.5px solid rgba(245,239,230,0.4); color: var(--beige);
+    padding: 0.9rem 2rem; border-radius: 4px; text-decoration: none;
+    font-size: 0.88rem; transition: all 0.2s;
+  }
+  .btn-outline-light:hover { border-color: rgba(245,239,230,0.9); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--burgundy-dark); padding: 3rem 4rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--beige); letter-spacing: 0.02em; }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { color: rgba(245,239,230,0.55); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--beige); }
+  .footer-copy { font-size: 0.76rem; color: rgba(245,239,230,0.35); }
+
+  @media (max-width: 980px) {
+    .intro-grid, .split-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav, section, .cta-section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">RoomMate</span>
+  </a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="contributors.html" class="active">Contributors</a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank">GitHub</a>
+    <a href="users.html#downloads" class="nav-btn">Download</a>
+  </div>
+</nav>
+
+<section class="first-section page-intro">
+  <div class="sec-label">Contributor Hub</div>
+  <div class="sec-title">Contribute to RoomMate<br><em>the right way.</em></div>
+  <p class="sec-desc">
+    This page gives contributors access to the main development resources of the project,
+    including the GitHub repository, message forum, participation guidelines, and code of conduct.
+    It also explains how RoomMate was reused and improved from an earlier academic project.
+  </p>
+
+  <div class="intro-grid">
+    <div class="intro-box">
+      <h3>For Contributors and Developers</h3>
+      <p>
+        RoomMate is an open-source academic project that welcomes structured and respectful contributions.
+        Contributors can review the code, suggest improvements, report issues, and help improve the project website and documentation.
+      </p>
+      <p>
+        This page is designed as a developer-focused space, while still keeping the same visual style and layout system used in the main website.
+      </p>
+    </div>
+
+    <div class="quick-list">
+      <div class="quick-item">
+        <div class="quick-item-title">Repository</div>
+        <div class="quick-item-text">Browse the source code, branches, pull requests, and project files on GitHub.</div>
+      </div>
+      <div class="quick-item">
+        <div class="quick-item-title">Discussion</div>
+        <div class="quick-item-text">Use GitHub Issues and Discussions to ask questions, report bugs, and suggest improvements.</div>
+      </div>
+      <div class="quick-item">
+        <div class="quick-item-title">Conduct</div>
+        <div class="quick-item-text">Contributions should stay respectful, constructive, and appropriate for an open-source team environment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--warm-white);">
+  <div class="sec-label">Main Resources</div>
+  <div class="sec-title">Everything contributors<br><em>need access to.</em></div>
+  <p class="sec-desc">
+    These are the main areas required for the contributors page, presented in the same clean card layout style used across the site.
+  </p>
+
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </div>
+      <div class="feat-title">GitHub Repository</div>
+      <div class="feat-desc">
+        Access the full project repository to view code, branches, pull requests, development history, and system files.
+      </div>
+      <a class="feat-link" href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank">Open repository →</a>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div class="feat-title">Message Forum</div>
+      <div class="feat-desc">
+        Contributors can use GitHub Issues and GitHub Discussions to ask questions, report problems, and discuss improvements.
+      </div>
+      <a class="feat-link" href="https://github.com/FatimaxYusuf/ITSE476_project/issues" target="_blank">Open issues →</a>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon-box">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div class="feat-title">Participation Guidelines</div>
+      <div class="feat-desc">
+        Fork the project, create a branch, make clear changes, test your work when needed, and submit a pull request.
+      </div>
+      <a class="feat-link" href="#guidelines">Read guidelines →</a>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7H14.5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="feat-title">Code of Conduct</div>
+      <div class="feat-desc">
+        RoomMate expects respectful communication, constructive feedback, and professional collaboration in all project spaces.
+      </div>
+      <a class="feat-link" href="https://github.com/FatimaxYusuf/ITSE476_project/blob/main/CODE_OF_CONDUCT.md" target="_blank">Read full conduct file →</a>
+    </div>
+  </div>
+</section>
+
+<section id="guidelines" class="split-section">
+  <div class="split-grid">
+    <div>
+      <div class="sec-label">How to Contribute</div>
+      <div class="sec-title">Participation<br><em>guidelines.</em></div>
+
+      <div class="about-box" style="margin-top: 1.5rem;">
+        <div class="guideline-list">
+          <div class="guideline-item">
+            <div class="guide-num">1</div>
+            <div>
+              <div class="guide-title">Start from the repository</div>
+              <div class="guide-desc">Clone or fork the RoomMate repository before starting any contribution work.</div>
+            </div>
+          </div>
+
+          <div class="guideline-item">
+            <div class="guide-num">2</div>
+            <div>
+              <div class="guide-title">Use a separate branch</div>
+              <div class="guide-desc">Keep your work organized by creating a branch for the feature, fix, or update you are working on.</div>
+            </div>
+          </div>
+
+          <div class="guideline-item">
+            <div class="guide-num">3</div>
+            <div>
+              <div class="guide-title">Keep the design consistent</div>
+              <div class="guide-desc">When editing website pages, use the same fonts, colors, spacing, card style, and overall layout used across the main site.</div>
+            </div>
+          </div>
+
+          <div class="guideline-item">
+            <div class="guide-num">4</div>
+            <div>
+              <div class="guide-title">Submit a clear pull request</div>
+              <div class="guide-desc">After making changes, commit them with a meaningful message and open a pull request describing your work.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">Project Conduct</div>
+      <div class="sec-title">Code of<br><em>conduct.</em></div>
+
+      <div class="about-box" style="margin-top: 1.5rem;">
+        <h3>Our Commitment</h3>
+        <p>
+          RoomMate is committed to providing a respectful, welcoming, and collaborative environment for everyone who participates in the project.
+        </p>
+        <p>
+          Contributors, users, and reviewers should feel comfortable asking questions, sharing ideas, reporting issues, and discussing improvements.
+        </p>
+        <p>
+          All participants are expected to communicate respectfully, give constructive feedback, respect different opinions and experience levels, and keep discussions focused on improving the project.
+        </p>
+        <p>
+          Harassment, insults, discrimination, offensive language, hostile communication, repeated disruption, and sharing private information without permission are not allowed.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--warm-white);">
+  <div class="sec-label">Development Work</div>
+  <div class="sec-title">Current contributor<br><em>focus areas.</em></div>
+  <p class="sec-desc">
+    The project repository should also reflect development tasks and system-related work. These are examples of the main contribution areas in RoomMate.
+  </p>
+
+  <div class="tasks-grid">
+    <div class="task-card">
+      <span class="task-tag tag-web">Website</span>
+      <div class="task-title">Public Pages</div>
+      <div class="task-desc">Improve pages such as Home, Users, and Contributors while keeping the RoomMate design system consistent.</div>
+    </div>
+
+    <div class="task-card">
+      <span class="task-tag tag-docs">Documentation</span>
+      <div class="task-title">Project Documents</div>
+      <div class="task-desc">Improve README files, contribution notes, setup instructions, and open-source project explanations.</div>
+    </div>
+
+    <div class="task-card">
+      <span class="task-tag tag-dev">System Code</span>
+      <div class="task-title">Feature Improvements</div>
+      <div class="task-desc">Enhance the reservation system, organize code better, and fix issues discovered during testing or review.</div>
+    </div>
+
+    <div class="task-card">
+      <span class="task-tag tag-docs">Community</span>
+      <div class="task-title">Issues and Discussions</div>
+      <div class="task-desc">Track feature ideas, bug reports, and contributor communication through GitHub Issues and Discussions.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--beige);">
+  <div class="sec-label">Project Reuse</div>
+  <div class="sec-title">Starting from what we had,<br><em>then improving it.</em></div>
+  <p class="sec-desc">
+    RoomMate was reused from a previous academic project and then transformed into a more complete open-source project with documentation, a public website, contributor guidance, and project standards.
+  </p>
+
+  <div class="about-box" style="margin-top: 2rem; max-width: 900px;">
+    <h3>Starting from What We Had</h3>
+    <p>
+      The project reused as a starting point was the earlier
+      <strong>ITSE305-Project</strong>.
+      Instead of building everything from scratch, the existing work was taken and improved.
+    </p>
+    <p>
+      The new open-source version,
+      <strong>ITSE476_project</strong>,
+      adds public project pages, contribution guidelines, a code of conduct, and clearer organization for community access.
+    </p>
+    <p>
+      This directly follows the requirement of starting from an existing project and showing how it was transformed into an open-source system.
+    </p>
+    <a class="feat-link" href="https://github.com/joodalherz/ITSE305-Project" target="_blank">View original reused project →</a>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="cta-text">
+    <h2>Ready to contribute?</h2>
+    <p>Explore the repository, review the guidelines, open a discussion, or help improve RoomMate through code, documentation, and design.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank" class="btn-primary-light">GitHub</a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project/discussions" target="_blank" class="btn-outline-light">Discussions</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">RoomMate</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="contributors.html">Contributors</a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank">GitHub</a>
+    <a href="#">MIT License</a>
+  </div>
+  <div class="footer-copy">ITSE476 · University of Bahrain · 2026</div>
+</footer>
+
+</body>
+</html>
