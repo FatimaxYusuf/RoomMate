@@ -114,7 +114,7 @@ This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for det
 
 ## Links
 
-- Website: https://fatimaxYusuf.github.io/ITSE476_project  
+- Website: https://FatimaxYusuf.github.io/ITSE476_project  
 - Bug Tracker: https://github.com/FatimaxYusuf/ITSE476_project/issues  
 - Discussions: https://github.com/FatimaxYusuf/ITSE476_project/discussions  
 - Wiki: https://github.com/FatimaxYusuf/ITSE476_project/wiki  
