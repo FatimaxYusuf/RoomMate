@@ -42,6 +42,16 @@ RoomMate differs by focusing on simplicity, educational use, and implementation 
 
 ---
 
+## Demo
+
+A live walkthrough of the core system is available here:
+
+**[Watch Demo](https://drive.google.com/file/d/1Kp2LeoONs1X2PFnyPfJ1YeVG8tVLO3rC/view?usp=sharing)**
+
+The video demonstrates the room search functionality running in Java.
+
+---
+
 ## The System (ITSE305 Project)
 
 The core reservation system was developed in ITSE305. The source code, tests, and CI/CD pipeline are available in the following repository:
