@@ -81,20 +81,21 @@ The current focus is on preparing the open-source environment, including documen
 
 ## Project Structure
 
-```
-ITSE476_project/
-├── README.md
-├── LICENSE
-├── .gitignore
-├── assets/                  # Images and static files
-├── backend/                 # Backend logic (planned)
-├── docs/
-│   ├── CONTRIBUTING.md      # Contribution guidelines
-│   └── FAQ.md               # Frequently asked questions
-└── frontend/
-    ├── index.html           # Main page
-    ├── users/               # User pages and resources
-    └── developers/          # Developer-related pages
+## Project Structure
+
+```text
+RoomMate/
+├── README.md                 # Project overview and documentation
+├── LICENSE                   # MIT License
+├── CODE_OF_CONDUCT.md        # Community behavior guidelines
+├── .gitignore                # Ignored files for Git
+├── index.html                # Main project page
+├── users.html                # Users page
+├── contributors.html         # Contributors page
+├── assets/                   # Images and static files
+└── docs/
+    ├── CONTRIBUTING.md       # Contribution guidelines
+    └── FAQ.md                # Frequently asked questions
 ```
 
 ---
@@ -124,7 +125,7 @@ This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for det
 
 ## Links
 
-- Website: https://FatimaxYusuf.github.io/ITSE476_project  
+- [Live Website](https://fatimaxyusuf.github.io/RoomMate/)
 - Bug Tracker: https://github.com/FatimaxYusuf/ITSE476_project/issues  
 - Discussions: https://github.com/FatimaxYusuf/ITSE476_project/discussions  
 - Wiki: https://github.com/FatimaxYusuf/ITSE476_project/wiki  
