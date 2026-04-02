@@ -125,8 +125,9 @@ This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for det
 
 ## Links
 
-- [Live Website](https://fatimaxyusuf.github.io/RoomMate/)
-- Bug Tracker: https://github.com/FatimaxYusuf/ITSE476_project/issues  
-- Discussions: https://github.com/FatimaxYusuf/ITSE476_project/discussions  
-- Wiki: https://github.com/FatimaxYusuf/ITSE476_project/wiki  
+- Live Website: https://fatimaxyusuf.github.io/RoomMate/
+- Repository: https://github.com/FatimaxYusuf/RoomMate
+- Bug Tracker: https://github.com/FatimaxYusuf/RoomMate/issues
+- Discussions: https://github.com/FatimaxYusuf/RoomMate/discussions
+- Wiki: https://github.com/FatimaxYusuf/RoomMate/wiki
 - Source Code: https://github.com/BatoolAlsayed1/HotelReservationSystem
