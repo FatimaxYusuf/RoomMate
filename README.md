@@ -73,9 +73,9 @@ The current focus is on preparing the open-source environment, including documen
 | Core reservation system | Completed (ITSE305) |
 | JUnit test suite | Completed |
 | CI/CD pipeline | Active |
-| Project website | In Progress |
-| GitHub Pages hosting | Pending |
-| Developer documentation | In Progress |
+| Project website | Completed |
+| GitHub Pages hosting | Completed |
+| Developer documentation | Completed |
 
 ---
 
