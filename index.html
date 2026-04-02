@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoomMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #8d0000;
+    --burgundy-light: #c01a1a;
+    --burgundy-dark: #7a0000;
+    --beige: #F5EFE6;
+    --beige-dark: #EAE0D0;
+    --beige-darker: #D9CCBA;
+    --warm-white: #FBF8F4;
+    --text-dark: #2C1810;
+    --text-mid: #6B5A52;
+    --text-light: #9E8E85;
+    --gold: #B8960C;
+    --gold-light: #D4AF37;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--warm-white); color: var(--text-dark); font-family: 'Lato', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(251,248,244,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--beige-darker);
+    padding: 0 4rem; display: flex; align-items: center; justify-content: space-between; height: 70px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .nav-logo-mark {
+    width: 34px; height: 34px; background: var(--burgundy); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; fill: none; stroke: var(--beige); stroke-width: 2; }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--burgundy); font-weight: 700; letter-spacing: 0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background: var(--burgundy); transform: scaleX(0); transition: transform 0.2s; transform-origin: left; }
+  .nav-links a:hover { color: var(--burgundy); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--burgundy); }
+  .nav-btn { background: var(--burgundy) !important; color: var(--beige) !important; padding: 0.5rem 1.4rem; border-radius: 4px; font-weight: 700 !important; }
+  .nav-btn:hover { background: var(--burgundy-light) !important; }
+  .nav-btn::after { display: none !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--burgundy);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; padding: 8rem 4rem 5rem; position: relative; overflow: hidden;
+    border-bottom: 3px solid rgba(212, 175, 55, 0.35);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(245,239,230,0.08) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(245,239,230,0.12); border: 1px solid rgba(245,239,230,0.25);
+    padding: 0.45rem 1.1rem; border-radius: 20px;
+    font-size: 0.76rem; color: rgba(245,239,230,0.85); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 2rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.8rem); color: var(--beige);
+    line-height: 1.1; margin-bottom: 1.5rem;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-desc {
+    font-size: 1rem; color: rgba(245,239,230,0.75); line-height: 1.8;
+    margin-bottom: 2.5rem; font-weight: 300; max-width: 500px;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.5s 0.3s ease both; }
+  .btn-primary-light {
+    background: var(--beige); color: var(--burgundy); padding: 0.9rem 2.2rem;
+    border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.03em; transition: all 0.2s;
+  }
+  .btn-primary-light:hover { background: var(--warm-white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-outline-light {
+    border: 1.5px solid rgba(245,239,230,0.4); color: var(--beige);
+    padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none;
+    font-size: 0.88rem; transition: all 0.2s;
+  }
+  .btn-outline-light:hover { border-color: rgba(245,239,230,0.9); transform: translateY(-2px); }
+
+  .hero-card {
+    background: rgba(245,239,230,0.1); border: 1px solid rgba(245,239,230,0.18);
+    backdrop-filter: blur(8px); padding: 0.7rem 1.1rem; border-radius: 8px;
+    min-width: 155px; transition: background 0.2s;
+  }
+  .hero-card:hover { background: rgba(245,239,230,0.16); }
+  .hero-card-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(245,239,230,0.45); margin-bottom: 0.25rem; }
+  .hero-card-value { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--beige); line-height: 1; }
+  .hero-card-sub { font-size: 0.65rem; color: rgba(245,239,230,0.45); margin-top: 0.15rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--beige-dark);
+    padding: 2.5rem 4rem; display: flex; gap: 0; flex-wrap: wrap;
+  }
+  .strip-item { flex: 1; min-width: 160px; padding: 0 2rem; border-right: 1px solid var(--beige-darker); }
+  .strip-item:first-child { padding-left: 0; }
+  .strip-item:last-child { border-right: none; }
+  .strip-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--burgundy); line-height: 1; margin-bottom: 0.25rem; }
+  .strip-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mid); font-weight: 700; }
+  .strip-desc { font-size: 0.82rem; color: var(--text-light); margin-top: 0.2rem; font-weight: 300; }
+
+  section { padding: 3.5rem 4rem; }
+  .sec-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--burgundy); font-weight: 700; margin-bottom: 0.6rem; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem; }
+  .sec-title em { color: var(--burgundy); font-style: italic; }
+  .sec-desc { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; max-width: 480px; font-weight: 300; }
+
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .feat-card {
+    background: var(--beige); border: 1px solid var(--beige-darker);
+    border-radius: 10px; padding: 2rem; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .feat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--burgundy), var(--gold-light));
+    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(164,0,0,0.1); }
+  .feat-card:hover::before { transform: scaleX(1); }
+  .feat-icon-box {
+    width: 44px; height: 44px; border-radius: 8px; background: var(--burgundy);
+    margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center;
+  }
+  .feat-icon-box svg { width: 20px; height: 20px; fill: none; stroke: var(--beige); stroke-width: 1.8; }
+  .feat-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+  .feat-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+
+  .announce-section { background: var(--beige); }
+  .announce-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+  @media(max-width: 768px) { .announce-grid { grid-template-columns: 1fr; } }
+  .announce-list { display: flex; flex-direction: column; }
+  .announce-item {
+    padding: 1.4rem 0; border-bottom: 1px solid var(--beige-darker);
+    display: flex; gap: 1.5rem; cursor: pointer; transition: padding-left 0.2s;
+  }
+  .announce-item:hover { padding-left: 0.5rem; }
+  .announce-date { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--burgundy); font-weight: 700; white-space: nowrap; padding-top: 0.15rem; min-width: 65px; }
+  .announce-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--text-dark); }
+  .announce-body { font-size: 0.82rem; color: var(--text-mid); font-weight: 300; line-height: 1.5; }
+  .a-tag { display: inline-block; font-size: 0.63rem; padding: 0.1rem 0.55rem; border-radius: 3px; margin-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  .tag-r { background: rgba(164,0,0,0.1); color: var(--burgundy); }
+  .tag-d { background: rgba(184,150,12,0.1); color: var(--gold); }
+  .tag-c { background: rgba(39,107,55,0.1); color: #276B3A; }
+
+  .about-box { background: var(--warm-white); border: 1px solid var(--beige-darker); border-radius: 10px; padding: 2.5rem; }
+  .about-box h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-dark); }
+  .about-box p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+  .about-box p:last-of-type { margin-bottom: 0; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+  .about-tag { background: var(--beige-dark); border: 1px solid var(--beige-darker); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.74rem; color: var(--text-mid); font-weight: 700; letter-spacing: 0.03em; }
+
+  .how-section { background: var(--warm-white); }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; counter-reset: steps; }
+  .step-card { background: var(--beige); border: 1px solid var(--beige-darker); border-radius: 10px; padding: 2rem; counter-increment: steps; }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: rgba(141,0,0,0.12); line-height: 1; margin-bottom: 0.5rem; }
+  .step-num::before { content: counter(steps, decimal-leading-zero); }
+  .step-title { font-weight: 700; margin-bottom: 0.45rem; font-size: 0.95rem; color: var(--text-dark); }
+  .step-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+
+  .cta-section {
+    background: var(--burgundy);
+    padding: 3.5rem 4rem; display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+  }
+  .cta-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--beige); margin-bottom: 0.6rem; }
+  .cta-text p { color: rgba(245,239,230,0.65); font-size: 0.94rem; font-weight: 300; }
+  .cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .pages-section { background: var(--beige-dark); padding: 4rem; }
+  .pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  @media(max-width:768px) { .pages-grid { grid-template-columns: 1fr; } }
+  .page-card {
+    background: var(--warm-white); border: 1px solid var(--beige-darker);
+    border-radius: 10px; padding: 2rem; text-decoration: none;
+    color: var(--text-dark); transition: all 0.25s; display: block;
+  }
+  .page-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(141,0,0,0.1); border-color: var(--burgundy); }
+  .page-card-icon-box {
+    width: 42px; height: 42px; border-radius: 8px; background: var(--beige-dark);
+    border: 1px solid var(--beige-darker); margin-bottom: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .page-card:hover .page-card-icon-box { background: var(--burgundy); border-color: var(--burgundy); }
+  .page-card-icon-box svg { width: 18px; height: 18px; fill: none; stroke: var(--text-mid); stroke-width: 1.8; transition: stroke 0.2s; }
+  .page-card:hover .page-card-icon-box svg { stroke: var(--beige); }
+  .page-card-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--burgundy); font-weight: 700; margin-bottom: 0.3rem; }
+  .page-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+  .page-card-desc { font-size: 0.82rem; color: var(--text-mid); font-weight: 300; line-height: 1.55; }
+
+  .hero-code { position: relative; z-index: 1; }
+  .code-window {
+    background: #1a0a0a;
+    border: 1px solid rgba(245,239,230,0.12);
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+  .code-titlebar {
+    background: #2a0f0f;
+    padding: 0.75rem 1.2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(245,239,230,0.08);
+  }
+  .code-dots { display: flex; gap: 0.4rem; }
+  .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+  .code-filename { font-size: 0.75rem; color: rgba(245,239,230,0.4); font-family: 'Courier New', monospace; letter-spacing: 0.03em; }
+  .code-body { padding: 1.5rem; overflow-x: auto; }
+  .code-body pre { font-family: 'Courier New', monospace; font-size: 0.78rem; line-height: 1.8; color: #d4c5b5; }
+  .c-kw { color: #e06c75; } .c-cls { color: #61afef; } .c-fn { color: #98c379; }
+  .c-str { color: #e5c07b; } .c-cmt { color: #5c6370; font-style: italic; }
+
+  footer { background: var(--burgundy-dark); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--beige); letter-spacing: 0.02em; }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { color: rgba(245,239,230,0.55); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--beige); }
+  .footer-copy { font-size: 0.76rem; color: rgba(245,239,230,0.35); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <span class="nav-logo-text">RoomMate</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="users.html">Users</a>
+    <a href="contributors.html">Contributors</a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank">GitHub</a>
+    <a href="users.html#downloads" class="nav-btn">Download</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><div class="badge-dot"></div>Open Source &nbsp;·&nbsp; MIT Licensed &nbsp;·&nbsp; Java 17</div>
+    <h1>Hotel Reservations,<br><em>Open &amp; Free.</em></h1>
+    <p class="hero-desc">RoomMate is a free, open-source hotel reservation system. Search rooms, manage bookings, and handle users. Its built in Java with a clean, community-driven codebase.</p>
+    <div class="hero-btns">
+      <a href="users.html#downloads" class="btn-primary-light">Download Now</a>
+      <a href="contributors.html" class="btn-outline-light">Contribute</a>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="code-window">
+      <div class="code-titlebar">
+        <div class="code-dots">
+          <div class="code-dot dot-r"></div>
+          <div class="code-dot dot-y"></div>
+          <div class="code-dot dot-g"></div>
+        </div>
+        <span class="code-filename">ReserveRoom.java</span>
+      </div>
+      <div class="code-body">
+        <pre><span class="c-cmt">// Reserve a room for a user</span>
+<span class="c-kw">public</span> <span class="c-cls">String</span> <span class="c-fn">reserveRoom</span>(
+    <span class="c-cls">User</span> user, <span class="c-cls">Room</span> room) {
+
+  <span class="c-kw">if</span> (!room.isAvailable()) {
+    <span class="c-kw">return</span> <span class="c-str">"Room "</span> + room.getNumber()
+         + <span class="c-str">" is already reserved."</span>;
+  }
+
+  room.setAvailable(<span class="c-kw">false</span>);
+  reservations.add(
+    <span class="c-str">"User "</span> + user.getName()
+    + <span class="c-str">" reserved room "</span>
+    + room.getNumber()
+  );
+
+  <span class="c-kw">return</span> <span class="c-str">"Room "</span> + room.getNumber()
+    + <span class="c-str">" reserved for "</span>
+    + user.getName() + <span class="c-str">"."</span>;
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="strip-item"><div class="strip-num">3</div><div class="strip-label">Core Modules</div><div class="strip-desc">Search, Reservation, Users</div></div>
+  <div class="strip-item"><div class="strip-num">4</div><div class="strip-label">Team Members</div><div class="strip-desc">University of Bahrain — ITSE476</div></div>
+  <div class="strip-item"><div class="strip-num">100%</div><div class="strip-label">Test Coverage</div><div class="strip-desc">JUnit 5 + GitHub Actions CI</div></div>
+  <div class="strip-item"><div class="strip-num">MIT</div><div class="strip-label">License</div><div class="strip-desc">No restrictions, forever free</div></div>
+</div>
+
+<section style="background: var(--warm-white)">
+  <div class="sec-label">What It Does</div>
+  <div class="sec-title">Everything you need.<br><em>Nothing you don't.</em></div>
+  <p class="sec-desc">RoomMate is intentionally lean. A clean Java codebase that anyone can read, understand, and extend.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="feat-title">Room Search</div>
+      <div class="feat-desc">Search available rooms by type, price range, or availability. Input validation and clear error messages built in.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="feat-title">Room Reservation</div>
+      <div class="feat-desc">Reserve rooms with user details. Handles conflicts, validates emails, and confirms bookings immediately.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div class="feat-title">User Management</div>
+      <div class="feat-desc">Create and manage users with name and email validation. Auto-incrementing IDs with full getter/setter support.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="feat-title">Automated Testing</div>
+      <div class="feat-desc">Full JUnit 5 test suite covering constructors, setters, getters, and all search and reservation logic.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <div class="feat-title">CI/CD Pipeline</div>
+      <div class="feat-desc">GitHub Actions compiles and runs all tests automatically on every pull request to main.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+      <div class="feat-title">Open Source</div>
+      <div class="feat-desc">MIT licensed. Fork it, extend it, use it freely. All contributions are welcome without restriction.</div>
+    </div>
+  </div>
+</section>
+
+<section class="announce-section">
+  <div class="announce-grid">
+    <div>
+      <div class="sec-label">Latest News</div>
+      <div class="sec-title">Announcements</div>
+      <div class="announce-list" style="margin-top:2rem">
+        <div class="announce-item">
+          <div class="announce-date">Apr 2026</div>
+          <div><div class="announce-title">Phase 1 Submitted <span class="a-tag tag-r">Release</span></div><div class="announce-body">Project website, GitHub repo, and all Phase 1 deliverables are live.</div></div>
+        </div>
+        <div class="announce-item">
+          <div class="announce-date">Mar 2026</div>
+          <div><div class="announce-title">CI/CD Pipeline Active <span class="a-tag tag-d">Dev</span></div><div class="announce-body">GitHub Actions now runs JUnit 5 tests automatically on every pull request to main.</div></div>
+        </div>
+        <div class="announce-item">
+          <div class="announce-date">Mar 2026</div>
+          <div><div class="announce-title">Contributors Welcome <span class="a-tag tag-c">Community</span></div><div class="announce-body">RoomMate is open for contributions. See the contributor page for guidelines and open tasks.</div></div>
+        </div>
+        <div class="announce-item">
+          <div class="announce-date">Mar 2026</div>
+          <div><div class="announce-title">Project Launched <span class="a-tag tag-r">Release</span></div><div class="announce-body">RoomMate is officially open source under the MIT license.</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-label">About</div>
+      <div class="sec-title">Why RoomMate?</div>
+      <div class="about-box" style="margin-top:2rem">
+        <h3>Built for Learning. Built to Share.</h3>
+        <p>RoomMate started as an academic project at the University of Bahrain (ITSE305) and was transformed into a fully open-source project as part of ITSE476 — Free and Open-Source Software Development.</p>
+        <p>The goal is to provide a clean, well-tested, and well-documented Java codebase that students and developers can freely learn from, contribute to, and build upon.</p>
+        <p>The name reflects both its purpose and spirit: a system for managing room bookings, built by a team — your roommate in hotel management software.</p>
+        <div class="about-tags">
+          <span class="about-tag">Java 17</span>
+          <span class="about-tag">JUnit 5</span>
+          <span class="about-tag">GitHub Actions</span>
+          <span class="about-tag">MIT License</span>
+          <span class="about-tag">Open Source</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section">
+  <div class="sec-label">Get Started</div>
+  <div class="sec-title">Up and running<br><em>in minutes.</em></div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num"></div><div class="step-title">Download or Clone</div><div class="step-desc">Download the ZIP or clone the GitHub repository. Requires JDK 17 or higher installed.</div></div>
+    <div class="step-card"><div class="step-num"></div><div class="step-title">Compile</div><div class="step-desc">Compile with javac. All source files are in the root directory. No external dependencies required.</div></div>
+    <div class="step-card"><div class="step-num"></div><div class="step-title">Run</div><div class="step-desc">Run ReserveRoom.java or SearchRoomClass.java directly from your terminal.</div></div>
+    <div class="step-card"><div class="step-num"></div><div class="step-title">Contribute</div><div class="step-desc">Fork, create a branch, write tests, and open a pull request. CI validates every PR automatically.</div></div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="cta-text">
+    <h2>Ready to get involved?</h2>
+    <p>Download the project, report an issue, or contribute code. Everyone is welcome.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="users.html#downloads" class="btn-primary-light">Download</a>
+    <a href="contributors.html" class="btn-outline-light">Contribute</a>
+  </div>
+</div>
+
+<section class="pages-section">
+  <div class="sec-label">Explore</div>
+  <div class="sec-title">Where to next?</div>
+  <div class="pages-grid">
+    <a href="users.html" class="page-card">
+      <div class="page-card-icon-box"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="page-card-label">For Users</div>
+      <div class="page-card-title">User Portal</div>
+      <div class="page-card-desc">Downloads, application resources, user announcements, and issue reporting.</div>
+    </a>
+    <a href="contributors.html" class="page-card">
+      <div class="page-card-icon-box"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="page-card-label">For Developers</div>
+      <div class="page-card-title">Contributor Hub</div>
+      <div class="page-card-desc">Participation guidelines, code of conduct, discussion forum, and GitHub access.</div>
+    </a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project" target="_blank" class="page-card">
+      <div class="page-card-icon-box"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+      <div class="page-card-label">Source Code</div>
+      <div class="page-card-title">GitHub Repository</div>
+      <div class="page-card-desc">Browse the code, open issues, view CI runs, and submit pull requests.</div>
+    </a>
+  </div>
+</section>
+
+<section style="background: var(--warm-white);">
+  <div class="sec-label">Look Around</div>
+  <div class="sec-title">Similar <em>Projects</em></div>
+  <p class="sec-desc" style="margin-bottom:2rem;">Before building RoomMate, we surveyed the existing open-source landscape. Here's what we found and why RoomMate fills a different niche.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="feat-title">HotelDruid</div>
+      <div class="feat-desc">A PHP-based open-source hotel management system for small and medium properties. Full-featured but heavy and not suitable for Java learning environments.</div>
+      <div style="margin-top:1.2rem;"><a href="https://www.hoteldruid.com" target="_blank" style="color:var(--burgundy);font-weight:700;font-size:0.82rem;text-decoration:none;">hoteldruid.com →</a></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="feat-title">QloApps</div>
+      <div class="feat-desc">A full-featured open-source hotel booking and reservation system built on PHP. Includes a PMS, booking engine, and hotel website builder. Far more complex than RoomMate's focused Java scope.</div>
+      <div style="margin-top:1.2rem;"><a href="https://github.com/Qloapps/QloApps" target="_blank" style="color:var(--burgundy);font-weight:700;font-size:0.82rem;text-decoration:none;">github.com/Qloapps →</a></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-box"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+      <div class="feat-title">Hotelio</div>
+      <div class="feat-desc">An open-source hotel management system built with Laravel (PHP). MIT licensed with front-desk operations support. Framework-dependent and not suitable as a standalone Java learning project.</div>
+      <div style="margin-top:1.2rem;"><a href="https://github.com/mehedijaman/hotelio" target="_blank" style="color:var(--burgundy);font-weight:700;font-size:0.82rem;text-decoration:none;">github.com/mehedijaman/hotelio →</a></div>
+    </div>
+  </div>
+  <div class="about-box" style="margin-top:2.5rem; max-width:860px; background:var(--beige); border-color:var(--beige-darker);">
+    <h3>Starting from What We Had</h3>
+    <p>RoomMate didn't start from scratch. The core system — <code style="background:var(--beige-dark);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85rem;">Room.java</code>, <code style="background:var(--beige-dark);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85rem;">User.java</code>, <code style="background:var(--beige-dark);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85rem;">ReserveRoom.java</code> — was originally built for ITSE305 (Software Engineering) at the University of Bahrain. It included JUnit 5 tests and a GitHub Actions CI/CD pipeline.</p>
+    <p>For ITSE476 (Free and Open-Source Software Development), we took that foundation and transformed it into a proper open-source project: adding a license, documentation, contribution guidelines, a public website, and opening it to the community.</p>
+    <div style="margin-top:1.2rem;">
+      <a href="https://github.com/BatoolAlsayed1/HotelReservationSystem" target="_blank" style="color:var(--burgundy);font-weight:700;font-size:0.85rem;">View original ITSE305 repository →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">RoomMate</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="contributors.html">Contributors</a>
+    <a href="https://github.com/FatimaxYusuf/ITSE476_project">GitHub</a>
+    <a href="#">MIT License</a>
+  </div>
+  <div class="footer-copy">ITSE476 · University of Bahrain · 2026</div>
+</footer>
+
+</body>
+</html>
