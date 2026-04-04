@@ -1,5 +1,3 @@
-<div align="center">
-
 # RoomMate
 ### Open-Source Hotel Reservation System
 
@@ -17,7 +15,7 @@ RoomMate is a student-built open-source hotel reservation system created to tran
 [Releases](https://github.com/FatimaxYusuf/RoomMate/releases) •
 [Original Java System](https://github.com/BatoolAlsayed1/HotelReservationSystem)
 
-</div>
+
 
 ---
 
