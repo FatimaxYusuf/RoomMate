@@ -89,21 +89,6 @@ For deeper navigation and project guidance, please use the [Wiki](https://github
 
 ---
 
-## Phase 1 Highlights
-
-The following work was completed to establish RoomMate as an open-source project space:
-
-- public project website with multiple pages
-- GitHub Pages deployment
-- README and repository documentation
-- contribution and community files
-- Wiki structure and navigation
-- Discussions setup and welcome post
-- Issues, labels, milestones, and templates
-- release setup and repository cleanup
-
----
-
 ## Features
 
 ### Open-source project features in this repository
