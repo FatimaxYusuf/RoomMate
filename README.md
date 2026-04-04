@@ -4,10 +4,9 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Status](https://img.shields.io/badge/Status-Phase%201%20Complete-blue.svg)
 ![Website](https://img.shields.io/badge/Website-GitHub%20Pages-222222?logo=github)
-![Issues](https://img.shields.io/badge/Issues-Active-orange.svg)
 ![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 
-RoomMate is a student-built open-source hotel reservation system created to transform an academic software project into a cleaner, more public, more collaborative, and more professionally presented repository.
+RoomMate is a student-built open-source hotel reservation system created to present an academic software project in a cleaner, more organized, and more collaborative way.
 
 [Live Website](https://fatimaxyusuf.github.io/RoomMate/) •
 [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki) •
@@ -16,6 +15,7 @@ RoomMate is a student-built open-source hotel reservation system created to tran
 [Releases](https://github.com/FatimaxYusuf/RoomMate/releases) •
 [Original Java System](https://github.com/BatoolAlsayed1/HotelReservationSystem)
 
+</div>
 
 ---
 
@@ -23,14 +23,7 @@ RoomMate is a student-built open-source hotel reservation system created to tran
 
 RoomMate is a free and open-source hotel reservation system designed to help users search for available rooms, make bookings, and manage reservations efficiently.
 
-This repository goes beyond storing project files. It was structured to present the project as a complete open-source space through:
-
-- a public project website
-- organized repository documentation
-- contributor onboarding resources
-- GitHub collaboration tools
-- issue tracking and project discussions
-- Wiki pages and release setup
+This repository focuses on the open-source presentation and organization of the project, including the website, documentation, collaboration tools, and contributor support materials.
 
 The original Java implementation of the hotel reservation system is preserved in the earlier ITSE305 repository:
 
@@ -38,69 +31,41 @@ The original Java implementation of the hotel reservation system is preserved in
 
 ---
 
-## Project Status
+## Status
 
 **Phase 1 Complete**
 
-Phase 1 focused on establishing the open-source foundation of RoomMate.  
-This includes:
-
-- website pages published through GitHub Pages
-- project documentation and onboarding materials
-- contribution and community guidelines
-- issue templates, labels, and milestone setup
-- Discussions and Wiki organization
-- release setup and repository refinement
+RoomMate has completed its first phase of open-source setup and repository organization.  
+This phase established the public website, documentation structure, contributor guidance, Wiki pages, GitHub collaboration tools, and release setup.
 
 ---
 
-## Why RoomMate
+## About This Repository
 
-RoomMate was created to move beyond a basic academic submission and present the project as a structured open-source repository with a clearer identity, stronger documentation, and a more professional community setup.
-
-Rather than focusing only on source code, this repository was designed to include the parts that make a project easier to understand, review, maintain, and improve. These include the public website, GitHub Pages deployment, Wiki pages, contributor documentation, issue templates, discussions, labels, milestones, and release organization.
-
-Through this work, RoomMate aims to:
-
-- present the hotel reservation system in a polished and professional way
-- improve access to project information for users and contributors
-- support collaboration through organized GitHub tools and documentation
-- provide a clearer path for future maintenance and contribution
-- demonstrate how a university software project can be prepared using open-source practices
-
-As a result, RoomMate is not only a hotel reservation system project, but also a complete effort in project presentation, documentation, collaboration, and open-source readiness.
-
----
-
-## What This Repository Includes
-
-This repository contains the **open-source presentation and collaboration space** for RoomMate.
-
-It includes:
+This repository includes:
 
 - project website pages
-- contributor and community documentation
-- repository organization and cleanup
-- GitHub collaboration setup
-- Wiki pages and onboarding resources
-- issue, discussion, and release management structure
+- repository documentation
+- contributor guidance and community files
+- Wiki organization and navigation
+- issue, discussion, and release setup
+- structure prepared for future project growth
 
-For deeper navigation and project guidance, please use the [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki).
+For project structure, page organization, and deeper documentation, please use the [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki), especially the [Project Architecture](https://github.com/FatimaxYusuf/RoomMate/wiki/Project-Architecture) page.
 
 ---
 
 ## Features
 
-### Open-source project features in this repository
+### Repository and open-source features
 - public website for project presentation
 - contributor documentation and onboarding support
 - GitHub Issues for tracked tasks and improvements
-- GitHub Discussions for questions and project conversation
+- GitHub Discussions for project questions and communication
 - Wiki pages for extended documentation
 - release setup and repository organization
-- community-oriented structure for future contribution
 
-### Original system features in the Java project
+### Original system features
 - user registration with input validation
 - room search and availability display
 - reservation handling with conflict detection
@@ -109,50 +74,17 @@ For deeper navigation and project guidance, please use the [Wiki](https://github
 
 ---
 
-## Documentation and Community
+## Demo
 
-RoomMate was organized to make exploration and collaboration easier.
+A walkthrough of the original hotel reservation system is available here:
 
-Key resources:
-
-- [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki)
-- [Contributing Guide](docs/CONTRIBUTING.md)
-- [FAQ](docs/FAQ.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Issues](https://github.com/FatimaxYusuf/RoomMate/issues)
-- [Discussions](https://github.com/FatimaxYusuf/RoomMate/discussions)
-
----
-
-## Repository Structure
-
-```text
-RoomMate/
-├── .github/
-│   └── ISSUE_TEMPLATE/
-│       ├── 1-bug_report.md
-│       ├── 2-feature_request.md
-│       ├── 3-documentation_update.md
-│       └── config.yml
-├── README.md
-├── LICENSE
-├── CODE_OF_CONDUCT.md
-├── .gitignore
-├── index.html
-├── users.html
-├── contributors.html
-├── assets/
-├── docs/
-│   ├── CONTRIBUTING.md
-│   └── FAQ.md
-└── frontend/
-```
+[Watch Demo](https://drive.google.com/file/d/1Kp2LeoONs1X2PFnyPfJ1YeVG8tVLO3rC/view?usp=sharing)
 
 ---
 
 ## Similar Projects
 
-Before presenting RoomMate as an open-source project, related systems were reviewed for comparison:
+Before presenting RoomMate as an open-source project, several related systems were reviewed for comparison:
 
 | Project | Description | Link |
 |---------|-------------|------|
@@ -160,15 +92,7 @@ Before presenting RoomMate as an open-source project, related systems were revie
 | OpenHotel | Property management system for small hotels | [Visit](https://sourceforge.net/projects/openhotel) |
 | Roomify | Room booking system for Drupal | [Visit](https://github.com/Roomify/roomify) |
 
-RoomMate differs by focusing on simplicity, educational value, project presentation, and a contributor-friendly academic open-source structure.
-
----
-
-## Demo
-
-A walkthrough of the original hotel reservation system is available here:
-
-[Watch Demo](https://drive.google.com/file/d/1Kp2LeoONs1X2PFnyPfJ1YeVG8tVLO3rC/view?usp=sharing)
+RoomMate differs by focusing on educational value, project presentation, and a contributor-friendly academic open-source structure.
 
 ---
 
@@ -187,18 +111,12 @@ A walkthrough of the original hotel reservation system is available here:
 
 Contributions are welcome.
 
-Before contributing, please read:
+Please read the [Contributing Guide](docs/CONTRIBUTING.md) before making changes.
 
-- [Contributing Guide](docs/CONTRIBUTING.md)
-- [FAQ](docs/FAQ.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-
-You can also use [Discussions](https://github.com/FatimaxYusuf/RoomMate/discussions) for questions or ideas before opening an issue or submitting a change.
+For broader project navigation and supporting information, please use the [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki).
 
 ---
 
 ## License
 
 RoomMate is released under the [MIT License](LICENSE).
-
-This allows users to use, copy, modify, and distribute the project with minimal restrictions, as long as the original license notice is included.
