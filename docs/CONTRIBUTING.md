@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to **RoomMate**.
 
-This document focuses only on the contribution process for this repository.
+This document explains only the contribution process for this repository.
 
 > [!NOTE]
 > Contributions of all sizes are welcome, including documentation updates, website improvements, issue reports, bug fixes, and suggestions.
@@ -11,14 +11,14 @@ This document focuses only on the contribution process for this repository.
 
 ## Before You Contribute
 
-Before making changes, please review the related project guidance first:
+Before making changes, please review:
 
-- Read the [Getting Started](https://github.com/FatimaxYusuf/RoomMate/wiki/Getting-Started) page in the Wiki
-- Review the [Development Workflow](https://github.com/FatimaxYusuf/RoomMate/wiki/Development-Workflow)
-- Check [Documentation and Resources](https://github.com/FatimaxYusuf/RoomMate/wiki/Documentation-and-Resources)
-- See [FAQ and Support](https://github.com/FatimaxYusuf/RoomMate/wiki/FAQ-and-Support)
-- Review the [README](../README.md) for the main project overview
-- Follow the [Code of Conduct](../CODE_OF_CONDUCT.md)
+- [Getting Started](https://github.com/FatimaxYusuf/RoomMate/wiki/Getting-Started)
+- [Development Workflow](https://github.com/FatimaxYusuf/RoomMate/wiki/Development-Workflow)
+- [README](../README.md)
+- [Code of Conduct](../CODE_OF_CONDUCT.md)
+
+For documentation links and support resources, please use the [Wiki](https://github.com/FatimaxYusuf/RoomMate/wiki).
 
 ---
 
@@ -102,7 +102,7 @@ If your change affects website pages, include screenshots if possible.
 
 ## For Documentation and Website Changes
 
-If your contribution affects `README.md`, `index.html`, `users.html`, `contributors.html`, or files in `docs/`, please make sure that:
+If your contribution affects `README.md`, `index.html`, `users.html`, `contributors.html`, or files in `docs/`, make sure that:
 
 - links are correct and working
 - the repository name is written as **RoomMate**
